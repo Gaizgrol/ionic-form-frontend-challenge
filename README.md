@@ -1,4 +1,4 @@
-# Backend Task - NestJS + RabbitMQ + MongoDB
+# Frontend Task - Ionic (Angular)
 
 ## Contents:
 
