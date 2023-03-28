@@ -14,6 +14,15 @@
 
 ---
 
+## 📱 Overview
+
+Use case | Light | Dark
+--- | --- | ---
+Register (no info) | ![Light](https://user-images.githubusercontent.com/28551993/228260981-c834dbd6-af98-49c0-9a23-807a473f0617.png) | ![Dark](https://user-images.githubusercontent.com/28551993/228261000-eb9b208b-35fd-46fa-b6f5-6b48f85168fb.png)
+Register (filled) | ![Light](https://user-images.githubusercontent.com/28551993/228260710-51cd8412-f67f-4f3e-b20a-885958f7e3f2.png) | ![Dark](https://user-images.githubusercontent.com/28551993/228260433-e9bec532-3c9d-498f-b1eb-5ddbbffb1e44.png)
+Register (success) | ![Light](https://user-images.githubusercontent.com/28551993/228261047-d719980c-6bcc-4d0a-8c5c-9dd1295dec80.png) | ![Dark](https://user-images.githubusercontent.com/28551993/228261025-bb003784-481f-4db0-b19f-34af23961494.png)
+Profiles | ![Light](https://user-images.githubusercontent.com/28551993/228261062-78b063a5-5235-409c-85ad-30c032e18cbe.png) | ![Dark](https://user-images.githubusercontent.com/28551993/228261076-d2d52c3f-0328-42d9-a106-3045ea9b33d7.png)
+
 ## 🎯 Objective
 
 The task is to create a simple user registry application from scratch using Ionic (Angular).
