@@ -27,7 +27,6 @@ export default class CardComponent {
   }
 
   async getData() {
-    console.log(this.profile.photoUrl);
     this.photo = await this.profileService.getPhoto(this.profile.photoUrl);
   }
 }

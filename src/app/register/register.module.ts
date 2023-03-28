@@ -2,9 +2,9 @@ import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Tab1Page } from './tab1.page';
+import { RegisterPage } from './register.page';
 
-import { Tab1PageRoutingModule } from './tab1-routing.module';
+import { RegisterPageRoutingModule } from './register-routing.module';
 
 @NgModule({
   imports: [
@@ -12,8 +12,8 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    Tab1PageRoutingModule,
+    RegisterPageRoutingModule,
   ],
-  declarations: [Tab1Page],
+  declarations: [RegisterPage],
 })
-export class Tab1PageModule {}
+export class RegisterPageModule {}

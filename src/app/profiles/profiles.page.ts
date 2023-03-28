@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Profile, ProfileService } from '../services/profile/profile.service';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss'],
+  selector: 'app-profiles',
+  templateUrl: 'profiles.page.html',
+  styleUrls: ['profiles.page.scss'],
 })
-export class Tab2Page {
+export class ProfilesPage {
   loading = false;
 
   profiles: Profile[] = [];
