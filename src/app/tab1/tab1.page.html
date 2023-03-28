@@ -1,17 +1,145 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      New Profile
     </ion-title>
   </ion-toolbar>
+  <ion-progress-bar [style]="'opacity: ' + (+loading)" type="indeterminate"></ion-progress-bar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <form class="form" [formGroup]="form">
+    <ion-grid class="wide">
+      <ion-row>
+        <ion-col size="auto">
+          <div class="photo-container" (click)="takePhoto()">
+            <div class="photo">
+              <div class="icon-slot">
+                <ion-icon name="person" class="icon"></ion-icon>
+              </div>
+              <img *ngIf="form.controls.photo.value" class="profile-picture" [src]="form.controls.photo.value" alt="">
+              <div class="camera-slot">
+                <ion-icon name="camera" size="large"></ion-icon>
+              </div>
+            </div>
+            <div class="photo-required" *ngIf="form.controls.photo.errors">Required</div>
+          </div>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label position="stacked">First name*</ion-label>
+            <ion-input formControlName="firstName" type="text"></ion-input>
+            <ion-note slot="error">Required</ion-note>
+          </ion-item>
+          <div class="v-space"></div>
+          <ion-item>
+            <ion-label position="stacked">Last name*</ion-label>
+            <ion-input formControlName="lastName" type="text"></ion-input>
+            <ion-note slot="error">Required</ion-note>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <div class="v-space"></div>
+      <ion-row>
+        <ion-item class="wide">
+          <ion-label position="stacked">Job title*</ion-label>
+          <ion-input formControlName="jobTitle" type="text"></ion-input>
+          <ion-note slot="error">Required</ion-note>
+        </ion-item>
+      </ion-row>
+      <div class="v-space"></div>
+      <ion-row>
+        <ion-card class="wide">
+          <ion-card-content>
+            <ion-row class="ion-align-items-center">
+              <ion-grid class="birthday">
+                <ion-row>
+                  Birthday:
+                </ion-row>
+                <ion-row>
+                  <ion-datetime-button
+                    datetime="birthday"
+                    (click)="updateMaxDate()"
+                  ></ion-datetime-button>
+                </ion-row>
+              </ion-grid>
+            </ion-row>
+            <div class="v-space"></div>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="stacked">Phone*</ion-label>
+                  <ion-input formControlName="phone" placeholder="012 345 6789" type="tel" (ionChange)="formatPhone()"></ion-input>
+                  <ion-note slot="error">{{ form.controls.phone.errors?.['required'] ? 'Required' : 'Phone should have 10 digits!' }}</ion-note>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <div class="v-space"></div>
+            <ion-row>
+              <ion-col sizeXs="4" sizeSm="auto">
+                <ion-item>
+                  <ion-label position="floating">State*</ion-label>
+                  <ion-select
+                    placeholder="NY"
+                    class="wide"
+                    [selectedText]="form.controls.selectedState.value?.abbreviation"
+                    formControlName="selectedState"
+                  >
+                    <ion-select-option *ngFor="let state of states" [value]="state">
+                      {{ state.name }}
+                    </ion-select-option>
+                  </ion-select>
+                  <ion-note slot="error">Required</ion-note>
+                </ion-item>
+              </ion-col>
+              <ion-col>  
+                <ion-item>
+                  <ion-label position="stacked">City*</ion-label>
+                  <ion-input formControlName="city" placeholder="New York City" type="text"></ion-input>
+                  <ion-note slot="error">Required</ion-note>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <div class="v-space"></div>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="stacked">Street*</ion-label>
+                  <ion-input formControlName="street" placeholder="Flatbush Ave" type="text"></ion-input>
+                  <ion-note slot="error">Required</ion-note>
+                </ion-item>
+              </ion-col>
+              <ion-col size="4">
+                <ion-item>
+                  <ion-label position="stacked">Number*</ion-label>
+                  <ion-input formControlName="number" placeholder="584" type="text"></ion-input>
+                  <ion-note slot="error">Required</ion-note>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="stacked">Additional address info</ion-label>
+                  <ion-input formControlName="additionalAddrInfo" placeholder="Apt. 201" type="text"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-grid>
+    <ion-button class="wide submit" [disabled]="!form.valid || loading" (click)="register()">Register</ion-button>
+  </form>
 </ion-content>
+
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime
+      id="birthday"
+      presentation="date"
+      [max]="today"
+      [(ngModel)]="birthDay"
+    ></ion-datetime>
+  </ng-template>
+</ion-modal>

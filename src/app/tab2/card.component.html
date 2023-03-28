@@ -1,0 +1,43 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>{{ profile.state.toLocaleUpperCase() }}</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="photo-container">
+            <img class="photo" *ngIf="photo" [src]="photo">
+            <ion-spinner class="loader" *ngIf="!photo"></ion-spinner>
+          </div>
+        </ion-col>
+        <ion-col size="4">
+          <ion-row>
+            <ion-card-title>{{ profile.firstName }} {{ profile.lastName }}</ion-card-title>
+          </ion-row>
+          <ion-row>
+            {{ formatDate(profile.birthDay) }}
+          </ion-row>
+        </ion-col>
+        <ion-col size="1"></ion-col>
+        <ion-col size="4">
+          <ion-row>
+            {{ profile.jobTitle }}
+          </ion-row>
+          <ion-row>
+            {{ profile.phone }}
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <span>
+          {{ profile.street }}, {{ profile.number }} - {{ profile.city }}
+        </span>
+        <span *ngIf="profile.additionalAddrInfo">
+          ({{profile.additionalAddrInfo}})
+        </span>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
